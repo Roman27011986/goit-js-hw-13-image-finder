@@ -9,10 +9,13 @@ export default {
             .then(res => res.json())
             .then(({ hits }) => {
                 this.page += 1
+              
                 return hits
             })
     },
+    
     resetPage() {
+        
         this.page = 1;
     },
     get query() {
@@ -20,9 +23,9 @@ export default {
     },
     set query(value) {
         this.serchQuery = value;
-    }
+    },
 
-      
+   
 }; 
 
 
