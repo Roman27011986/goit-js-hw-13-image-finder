@@ -1,0 +1,739 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+ 
+ margin: 0;
+ background:url(./img/brickwall.png);
+ background-attachment:fixed;
+ scroll-behavior: smooth;
+}
+
+$fuschia: #ff0081;
+$button-bg: $fuschia;
+$button-text-color: #fff;
+$baby-blue: #f8faff;
+
+
+
+//................................Стили поисковой строки...................................
+
+
+
+.container {
+  position: relative;
+  margin: auto;
+  top: 20px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 100px;
+  .search {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background: crimson;
+    border-radius: 50%;
+    transition: all 1s;
+    // z-index: 4;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+    // box-shadow: 0 0 25px 0 crimson;
+    &:hover {
+      cursor: pointer;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: 22px;
+      right: 0;
+      bottom: 0;
+      left: 22px;
+      width: 12px;
+      height: 2px;
+      background: white;
+      transform: rotate(45deg);
+      transition: all .5s;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      margin: auto;
+      top: -5px;
+      right: 0;
+      bottom: 0;
+      left: -5px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid white;
+      transition: all .5s;
+    }
+  }
+  input {
+    font-family: 'Inconsolata', monospace;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    // border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: crimson;
+    color: white;
+    text-shadow: 0 0 10px crimson;
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 25px 0 crimson,
+                0 20px 25px 0 rgba(0, 0, 0, 0.2);
+    // box-shadow: inset 0 0 25px 0 rgba(0, 0, 0, 0.5);
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      width: 300px;
+      opacity: 1;
+      cursor: text;
+    }
+    &:focus ~ .search {
+      right: -250px;
+      background: #151515;
+      z-index: 6;
+      &::before {
+        top: 0;
+        left: 0;
+        width: 25px;
+      }
+      &::after {
+        top: 0;
+        left: 0;
+        width: 25px;
+        height: 2px;
+        border: none;
+        background: white;
+        border-radius: 0%;
+        transform: rotate(-45deg);
+      }
+    }
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+      font-weight: bolder;
+    }
+  }
+}
+
+//..............................Стили галереи......................
+.menu__item{
+  transform: translate(450%,0px);
+  transition: all 0.3s ease 0s;
+}
+.active{
+  transform: translate(0px,0px);
+}
+
+// .container {
+//   padding-right: 15px;
+//   padding-left: 15px;
+//   margin-right: auto;
+//   margin-left: auto;
+
+// @media screen and (min-width: 480px) and (max-width: 767px){
+//   width: 480px;
+// }
+
+// @media screen and (min-width: 768px) {
+//   width: 730px;
+// }
+
+// @media screen and (min-width: 1200px) {
+//   width: 1080px;
+//  }
+// }
+.gallery {
+
+
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: calc(100% - 200px);
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 24px;
+  @media screen and (min-width: 480px) and (max-width: 1200px){
+   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 8px;
+  box-shadow: 10px 10px 8px 3px rgba(0, 0, 0, .5);
+  
+  
+  border-width: 10px ;
+  border-color:transparent;
+  background:url(./img/memphis-colorful.png)
+}
+
+
+
+.card__image {
+  height: 300px;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.card__name {
+  margin-top: 16px;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.card__descr {
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.card__price {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  font-size: 20px;
+}
+
+.card__price i {
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+.card__reviews {
+  display: block;
+  margin-top: 16px;
+}
+
+
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tag-list__item {
+  padding: 4px 8px;
+  margin: 4px;
+  border-radius: 2px;
+  background-color: inherit;
+  color: #000;
+}
+.brighttheme-success {
+  margin-left: auto;
+  
+}
+
+
+//..........................Стили модального окна......................
+
+.lightbox {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--animation-duration) var(--timing-function);
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.lightbox__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox__content {
+  transform: scale(0.95);
+  transition: transform var(--animation-duration) var(--timing-function);
+   border-width: 10px ;
+  border-color:transparent;
+  background:url(./img/symphony.png);
+  
+   
+  
+}
+
+
+
+.lightbox.is-open .lightbox__content {
+  transform: scale(1);
+  padding: 15px;
+  border-radius: .25rem;
+}
+
+.lightbox__image {
+  display: block;
+  width: 1000px;
+  height: 600px;
+  max-height: 100vh;
+  max-width: 100vw;
+  
+  
+}
+
+.lightbox__button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color var(--animation-duration) var(--timing-function);
+  outline: none;
+  background-image: url('./img/icon-close.svg');
+  background-position: center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+}
+
+.lightbox__button:hover,
+.lightbox__button:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+//...................Стили прелодера......................................
+
+.load {
+  position:fixed;
+  width:600px;
+  height:36px;
+  left:50%;
+  top:40%;
+  margin-left:-300px;
+  overflow:visible;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  cursor:default;
+}
+
+.load div {
+  position:absolute;
+  width:40px;
+  height:56px;
+  opacity:0;
+  font-family: 'Bubbler One', sans-serif;
+
+  font-size: 40px;
+  animation:move 2s linear infinite;
+  -o-animation:move 2s linear infinite;
+  -moz-animation:move 2s linear infinite;
+  -webkit-animation:move 2s linear infinite;
+  transform:rotate(180deg);
+  -o-transform:rotate(180deg);
+  -moz-transform:rotate(180deg);
+  -webkit-transform:rotate(180deg);
+  color:#FFF;
+}
+
+.load div:nth-child(2) {
+  animation-delay:0.2s;
+  -o-animation-delay:0.2s;
+  -moz-animation-delay:0.2s;
+  -webkit-animation-delay:0.2s;
+}
+.load div:nth-child(3) {
+  animation-delay:0.4s;
+  -o-animation-delay:0.4s;
+  -webkit-animation-delay:0.4s;
+  -webkit-animation-delay:0.4s;
+}
+.load div:nth-child(4) {
+  animation-delay:0.6s;
+  -o-animation-delay:0.6s;
+  -moz-animation-delay:0.6s;
+  -webkit-animation-delay:0.6s;
+}
+.load div:nth-child(5) {
+  animation-delay:0.8s;
+  -o-animation-delay:0.8s;
+  -moz-animation-delay:0.8s;
+  -webkit-animation-delay:0.8s;
+}
+.load div:nth-child(6) {
+  animation-delay:1s;
+  -o-animation-delay:1s;
+  -moz-animation-delay:1s;
+  -webkit-animation-delay:1s;
+}
+.load div:nth-child(7) {
+  animation-delay:1.2s;
+  -o-animation-delay:1.2s;
+  -moz-animation-delay:1.2s;
+  -webkit-animation-delay:1.2s;
+}
+
+@keyframes move {
+  0% {
+    right:0;
+    opacity:0;
+  }
+  35% {
+    right: 41%; 
+    -moz-transform:rotate(0deg);
+    -webkit-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    transform:rotate(0deg);
+    opacity:1;
+  }
+  65% {
+    right:59%; 
+    -moz-transform:rotate(0deg); 
+    -webkit-transform:rotate(0deg); 
+    -o-transform:rotate(0deg);
+    transform:rotate(0deg); 
+    opacity:1;
+  }
+  100% {
+    right:100%; 
+    -moz-transform:rotate(-180deg); 
+    -webkit-transform:rotate(-180deg); 
+    -o-transform:rotate(-180deg); 
+    transform:rotate(-180deg);
+    opacity:0;
+  }
+}
+
+@-moz-keyframes move {
+  0% {
+    right:0; 
+    opacity:0;
+  }
+  35% {
+    right:41%; 
+    -moz-transform:rotate(0deg); 
+    transform:rotate(0deg);
+    opacity:1;
+  }
+  65% {
+    right:59%; 
+    -moz-transform:rotate(0deg); 
+    transform:rotate(0deg);
+    opacity:1;
+  }
+  100% {
+    right:100%; 
+    -moz-transform:rotate(-180deg); 
+    transform:rotate(-180deg);
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes move {
+  0% {
+    right:0; 
+    opacity:0;
+  }
+  35% {
+    right:41%; 
+    -webkit-transform:rotate(0deg); 
+    transform:rotate(0deg); 
+    opacity:1;
+  }
+  65% {
+    right:59%; 
+    -webkit-transform:rotate(0deg); 
+    transform:rotate(0deg); 
+    opacity:1;
+  }
+  100% {
+    right:100%;
+    -webkit-transform:rotate(-180deg); 
+    transform:rotate(-180deg); 
+    opacity:0;
+  }
+}
+
+@-o-keyframes move {
+  0% {
+    right:0; 
+    opacity:0;
+  }
+  35% {
+    right:41%; 
+    -o-transform:rotate(0deg); 
+    transform:rotate(0deg); 
+    opacity:1;
+  }
+  65% {
+    right:59%; 
+    -o-transform:rotate(0deg); 
+    transform:rotate(0deg); 
+    opacity:1;
+  }
+  100% {
+    right :100%; 
+    -o-transform:rotate(-180deg); 
+    transform:rotate(-180deg); 
+    opacity:0;
+  }
+}
+.done{
+    display:none;
+    
+}
+//.......................Стили нотификашки............................
+.pnotify-container {
+    
+    padding: .4em;
+    
+}
+.PNotify{
+  font-family: 'Clicker Script', cursive;
+  font-size: 40px;
+  border-radius: 5px;
+  min-height: 80px;
+    padding: 0;
+  background-image: url(./img/retina_wood.png);
+ 
+  line-height: 1.3;
+  
+}
+//................... Стили кнопки вверх..............................
+
+.matrix {
+  width: 400px;
+  margin: auto;
+  text-align: justify;
+}
+/* begin Demo Not necessary   */
+
+/* begin begin Back to Top button  */
+
+.back_to_top {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  z-index: 9999;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: #f5f5f5;
+  color: #444;
+  cursor: pointer;
+  border-radius: 2px;
+  display: none;
+}
+
+.back_to_top:hover {
+  background: #e9ebec;
+}
+
+.back_to_top-show {
+  display: block;
+}
+.bubbly-button{
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  display: inline-block;
+  font-size: 1em;
+  padding: 1em 2em;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $button-bg;
+  color: $button-text-color;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+  
+  &:focus {
+    outline: 0;
+  }
+  
+  &:before, &:after{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  }
+  
+  &:before{
+    display: none;
+    top: -75%;
+    background-image:  
+      radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 20%, $button-bg 20%, transparent 30%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+  //background-position: 0% 80%, -5% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 85% 30%;
+  }
+  
+  &:after{
+    display: none;
+    bottom: -75%;
+    background-image:  
+    radial-gradient(circle, $button-bg 20%, transparent 20%), 
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle,  transparent 10%, $button-bg 15%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%),
+    radial-gradient(circle, $button-bg 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  //background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+ 
+  &:active{
+    transform: scale(0.9);
+    background-color: darken($button-bg, 5%);
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+  }
+  
+  &.animate{
+    &:before{
+      display: block;
+      animation: topBubbles ease-in-out 0.75s forwards;
+    }
+    &:after{
+      display: block;
+      animation: bottomBubbles ease-in-out 0.75s forwards;
+    }
+  }
+}
+
+
+@keyframes topBubbles {
+  0%{
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;}
+ 100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+
+@keyframes bottomBubbles {
+  0%{
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;}
+ 100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+  background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
+  }
+}
+
+
+//...............Стили боковых заголовков.....................
+
+
+.hiddenTittleLeft.hidden,
+.hiddenTittleRight.hidden {
+ display: inline;
+
+}
+
+.hiddenTittleLeft,.hiddenTittleRight {
+ 
+  position: fixed;
+  display: none;
+  width: 50px;
+  height: 500px;
+  line-height: 80px;
+  top: 15%;
+
+  font-family: 'Clicker Script', cursive;
+  font-size: 1.8em;
+
+  color: crimson;
+}
+.hiddenTittleLeft{
+  margin-left: 27px;
+}
+.hiddenTittleRight{
+  top: 25%;
+  right: 0;
+}

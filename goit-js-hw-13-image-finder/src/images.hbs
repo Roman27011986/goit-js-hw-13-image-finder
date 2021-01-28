@@ -1,26 +1,28 @@
 {{#each this}}
-<li class="grid">
-    <div class="photo-card">
-        <img src="{{webformatURL}}" alt="" />
+<li class="menu__item">
+    <div class="card">
 
-        <div class="stats">
-            <p class="stats-item">
+        <img src="{{webformatURL}}" alt="" data-source="{{largeImageURL}}" class="card__image" />
+
+        <div class="tag-list">
+            <p class="tag-list__item">
                 <i class="material-icons">thumb_up</i>
                 {{likes}}
             </p>
-            <p class="stats-item">
+            <p class="tag-list__item">
                 <i class="material-icons">visibility</i>
                 {{views}}
             </p>
-            <p class="stats-item">
+            <p class="tag-list__item">
                 <i class="material-icons">comment</i>
                 {{comments}}
             </p>
-            <p class="stats-item">
+            <p class="tag-list__item">
                 <i class="material-icons">cloud_download</i>
                 {{downloads}}
             </p>
         </div>
     </div>
+
 </li>
 {{/each}}
