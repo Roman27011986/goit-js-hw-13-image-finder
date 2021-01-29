@@ -14,7 +14,7 @@ const serchRef = document.querySelector('.search-form')
 const rootTarget = document.querySelector('.js-rootTarget')
    
 let inputValue = ''
-
+let i = -1
 serchRef.addEventListener('input', debounce(event => {
     
      inputValue = event.target.value
@@ -46,14 +46,14 @@ serchRef.addEventListener('input', debounce(event => {
       tittleRightRef.classList.remove('hidden')
       tittleLeftRef.classList.remove('hidden')
       listRef.innerHTML = "";
-      
+      i = -1
     }
 }, 1000))
   
    
 
 
-  let i = -1 
+   
 function animateGalery(values) {
      
     
