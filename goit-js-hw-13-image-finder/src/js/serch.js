@@ -45,11 +45,14 @@ serchRef.addEventListener('input', debounce(event => {
   } else {
       tittleRightRef.classList.remove('hidden')
       tittleLeftRef.classList.remove('hidden')
-    listRef.innerHTML = "";
+      listRef.innerHTML = "";
+      
     }
 }, 1000))
   
    
+
+
   let i = -1 
 function animateGalery(values) {
      
@@ -59,12 +62,14 @@ function animateGalery(values) {
             i += 1
         } else {
             clearInterval(qwe)
+            return
         }
      values[i].classList.add('active')
-    console.log(values[i+1]);
+    
 }, 150);
 
 }
+
 const options = {
     rootMargin: '200px'
 }
