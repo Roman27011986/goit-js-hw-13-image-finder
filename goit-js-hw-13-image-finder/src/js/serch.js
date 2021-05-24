@@ -14,7 +14,7 @@ const serchRef = document.querySelector('.search-form')
 const rootTarget = document.querySelector('.js-rootTarget')
    
 let inputValue = ''
-
+let i = -1
 serchRef.addEventListener('input', debounce(event => {
     
      inputValue = event.target.value
@@ -45,23 +45,37 @@ serchRef.addEventListener('input', debounce(event => {
   } else {
       tittleRightRef.classList.remove('hidden')
       tittleLeftRef.classList.remove('hidden')
-    listRef.innerHTML = "";
+      listRef.innerHTML = "";
+      i = -1
     }
 }, 1000))
   
+<<<<<<< HEAD
 let i = -1 
+=======
+   
+
+
+   
+>>>>>>> 37cdc2f3025d6226e5df7423e7a969b7a7abc9a5
 function animateGalery(values) {
    const card = setInterval(() => {
         if (i < values.length-1) {
             i += 1
         } else {
+<<<<<<< HEAD
             clearInterval(card)
+=======
+            clearInterval(qwe)
+            return
+>>>>>>> 37cdc2f3025d6226e5df7423e7a969b7a7abc9a5
         }
      values[i].classList.add('active')
-    console.log(values[i+1]);
+    
 }, 150);
 
 }
+
 const options = {
     rootMargin: '200px'
 }
