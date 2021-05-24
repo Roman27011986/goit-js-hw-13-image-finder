@@ -1,10 +1,9 @@
-import imagesTpl from '../images.hbs'
-const listRef = document.querySelector('.gallery')
-
+import imagesTpl from '../images.hbs';
+const listRef = document.querySelector('.gallery');
 
 function updateHitsMarkup(hits) {
-    const markup = imagesTpl(hits)
-    listRef.insertAdjacentHTML('beforeend', markup)
+    const markup = imagesTpl(hits);
+    listRef.insertAdjacentHTML('beforeend', markup);
      
-}
-export default updateHitsMarkup
+};
+export default updateHitsMarkup;

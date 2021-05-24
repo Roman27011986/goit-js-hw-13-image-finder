@@ -49,16 +49,13 @@ serchRef.addEventListener('input', debounce(event => {
     }
 }, 1000))
   
-   
-  let i = -1 
+let i = -1 
 function animateGalery(values) {
-     
-    
-   const qwe = setInterval(() => {
+   const card = setInterval(() => {
         if (i < values.length-1) {
             i += 1
         } else {
-            clearInterval(qwe)
+            clearInterval(card)
         }
      values[i].classList.add('active')
     console.log(values[i+1]);
