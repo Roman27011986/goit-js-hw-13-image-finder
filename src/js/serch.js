@@ -13,32 +13,58 @@ const rootTarget = document.querySelector('.js-rootTarget');
 
 let inputValue = '';
 let i = -1;
-serchRef.addEventListener(
-  'input',
-  debounce(event => {
-    inputValue = event.target.value;
-    if (inputValue) {
-      io.unobserve(rootTarget);
-      listRef.innerHTML = '';
-      i = -1;
-      PNotify.success({
-        text: `Search : ${inputValue}`,
-        delay: 1000,
-      });
-      apiService.query = inputValue;
-      apiService.resetPage();
-      apiService.fetchHits().then(hits => {
-        updateHitsMarkup(hits);
-        const animateLiref = listRef.querySelectorAll('.menu__item');
-        animateGalery(animateLiref);
-        io.observe(rootTarget);
-      });
-    } else {
-      listRef.innerHTML = '';
-      i = -1;
-    }
-  }, 1000),
-);
+// serchRef.addEventListener(
+//   'input',
+//   debounce(event => {
+//     inputValue = event.target.value;
+//     if (inputValue) {
+//       io.unobserve(rootTarget);
+//       listRef.innerHTML = '';
+//       i = -1;
+//       PNotify.success({
+//         text: `Search : ${inputValue}`,
+//         delay: 1000,
+//       });
+//       apiService.query = inputValue;
+//       apiService.resetPage();
+//       apiService.fetchHits().then(hits => {
+//         updateHitsMarkup(hits);
+//         const animateLiref = listRef.querySelectorAll('.menu__item');
+//         animateGalery(animateLiref);
+//         io.observe(rootTarget);
+//       });
+//     } else {
+//       listRef.innerHTML = '';
+//       i = -1;
+//     }
+//   }, 1000),
+// );
+
+serchRef.addEventListener('keydown', function (e) {
+  if (e.keyCode === 13 && this.value) {
+    inputValue = this.value;
+    io.unobserve(rootTarget);
+    listRef.innerHTML = '';
+    i = -1;
+    PNotify.success({
+      text: `Search : ${inputValue}`,
+      delay: 1000,
+    });
+    apiService.query = inputValue;
+    apiService.resetPage();
+    apiService.fetchHits().then(hits => {
+      updateHitsMarkup(hits);
+      const animateLiref = listRef.querySelectorAll('.menu__item');
+      animateGalery(animateLiref);
+      io.observe(rootTarget);
+    });
+  }
+  if (e.keyCode === 8) {
+    inputValue = '';
+    listRef.innerHTML = '';
+    i = -1;
+  }
+});
 
 function animateGalery(values) {
   const card = setInterval(() => {
